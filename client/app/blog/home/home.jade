@@ -1,0 +1,9 @@
+div(ng-include='"components/navbar/navbar.html"')
+
+.container
+  .row
+    .col-lg-12
+      h1.page-header Features:
+      ul(ng-repeat='blog in blogs')
+        li
+          | {{blog}}

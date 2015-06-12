@@ -1,0 +1,13 @@
+mixin formMix(formData)
+  form.form(name='form', ng-submit='#{formData.submit}(form)')
+    each field in formData.fields
+      .form-group
+        label #{field.label}
+        case field.tag
+          when nil
+            input.form-control(type='#{field.type || "text"}', name='#{field.name}', ng-model='#{formData.obj}.#{field.name}')
+          when "textarea"
+            textarea.form-control(type='#{field.type || "text"}', name='#{field.name}', ng-model='#{formData.obj}.#{field.name}')
+    div
+      button.btn.btn-inverse.btn-lg.btn-login(type='submit')
+        | #{formData.submitText}

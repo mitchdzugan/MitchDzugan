@@ -1,0 +1,24 @@
+div(ng-include='"components/navbar/navbar.html"')
+.container
+  .row
+    .col-sm-12
+      form.form(name='form', ng-submit='new_blog(form)', novalidate='')
+        .form-group
+          label Title
+          input.form-control(type='text', name='title' ng-model='blog.title')
+        .form-group
+          label Image
+          input.form-control(type='text', name='image', ng-model='blog.image')
+        .form-group
+          label Body
+          textarea.form-control(type='text', name='body', ng-model='blog.body')
+
+        .form-group.has-error
+          p.help-block(ng-show='form.title.$error.required && form.image.$error.required && form.body.$error.required && submitted')
+            | All fields are manditory
+          p.help-block {{ errors.other }}
+
+        div
+          button.btn.btn-inverse.btn-lg.btn-login(type='submit')
+            | Submit Post
+  hr

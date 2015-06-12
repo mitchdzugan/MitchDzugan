@@ -1,0 +1,8 @@
+div(ng-include='"components/navbar/navbar.html"')
+include ../util.jade
+
+.container
+  .row
+    .col-sm-12
+      +blogFormMix({submit: 'new_blog', submitText: 'Submit Post'})
+  hr
