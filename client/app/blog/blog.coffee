@@ -15,7 +15,7 @@ angular.module 'mitchDzuganApp'
     url: '/blog/:id'
     templateUrl: 'app/blog/single/single.html'
     controller: 'BlogSingleCtrl'
-  .state 'blog-single.edit',
-    url: '/edit'
+  .state 'blog-edit',
+    url: '/blog/:id/edit'
     templateUrl: 'app/blog/single/edit.html'
     controller: 'BlogEditCtrl'

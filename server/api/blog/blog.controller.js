@@ -2,21 +2,35 @@
 
 var _ = require('lodash');
 var Blog = require('./blog.model');
+var Comment = require('../comment/comment.model');
 
 // Get list of blogs
 exports.index = function(req, res) {
   Blog.find(function (err, blogs) {
     if(err) { return handleError(res, err); }
+    console.log(blogs);
     return res.json(200, blogs);
   });
 };
 
 // Get a single blog
 exports.show = function(req, res) {
+  var comment;
   Blog.findById(req.params.id, function (err, blog) {
     if(err) { return handleError(res, err); }
     if(!blog) { return res.send(404); }
-    return res.json(blog);
+    Comment.find({})
+           .where('blog').equals(blog._id) 
+           .exec(function (err, comments) {
+      if (err) {return handleError(res, err)}
+      return res.json({blog: blog, comments: comments});
+      blog = blog.toObject();
+      blog.comments = [];
+      for (comment in comments) {
+        add_comment(blog, comments[comment].toObject());
+      }
+      return res.json(blog);
+    });
   });
 };
 

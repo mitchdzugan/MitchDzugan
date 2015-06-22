@@ -3,6 +3,5 @@ mixin blogFormMix(blogFieldData)
   +formMix(
     {submit: blogFieldData.submit, fields: [
       {name: "title", label: "Title"},
-      {name: "image", label: "Image"},
       {name: "body", label: "Body", tag: "textarea"},
     ], submitText: blogFieldData.submitText, obj: "blog"})

@@ -9,5 +9,5 @@ mixin formMix(formData)
           when "textarea"
             textarea.form-control(type='#{field.type || "text"}', name='#{field.name}', ng-model='#{formData.obj}.#{field.name}')
     div
-      button.btn.btn-inverse.btn-lg.btn-login(type='submit')
+      button.btn.btn-primary(type='submit')
         | #{formData.submitText}

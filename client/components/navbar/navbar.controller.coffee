@@ -3,8 +3,8 @@
 angular.module 'mitchDzuganApp'
 .controller 'NavbarCtrl', ($scope, $location, Auth) ->
   $scope.menu = [
-    title: 'Home'
-    link: '/'
+    title: 'Blog'
+    link: '/blog'
   ]
   $scope.isCollapsed = true
   $scope.isLoggedIn = Auth.isLoggedIn
@@ -13,7 +13,7 @@ angular.module 'mitchDzuganApp'
 
   $scope.logout = ->
     Auth.logout()
-    $location.path '/login'
+    #$location.path '/login'
 
   $scope.isActive = (route) ->
     route is $location.path()

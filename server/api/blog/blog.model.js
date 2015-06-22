@@ -6,13 +6,7 @@ var mongoose = require('mongoose'),
 var BlogSchema = new Schema({
     title: String,
     body: String,
-    image: String,
-    date: { type: Date, default: Date.now },
-    comments: [{
-        author: String,
-        body: String,
-        date: Date
-    }]
+    date: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('Blog', BlogSchema);

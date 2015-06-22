@@ -1,5 +1,32 @@
 div(ng-include='"components/navbar/navbar.html"')
 
+
+mixin newComment(parent)
+  button(class="btn btn-link", ng-show='#{parent}.hidden', ng-click='set_hidden(#{parent}, false)') reply
+  button(class="btn btn-link", ng-hide='#{parent}.hidden', ng-click='set_hidden(#{parent}, true)') cancel
+  form.form(ng-hide='#{parent}.hidden', name='form', ng-submit='add_comment(#{parent}, form)')
+    p.alert-danger(ng-show='#{parent}.error') Error: {{#{parent}.error.message}}
+    .form-group(ng-hide='isLoggedIn()')
+      label Author
+      input.form-control(type='text', name='author', ng-model='#{parent}.reply.author')
+    .form-group
+      label Body
+      textarea.form-control(type='text', name='body', ng-model='#{parent}.reply.body')
+    div
+      button.btn.btn-primary(type='submit') Add Comment
+
+
+script(type="text/ng-template" id="comment_tree_render")
+  p {{comment.author}}
+  p {{comment.body}}
+  +newComment('comment')
+  ul.list-group
+    li.list-group-item(ng-repeat='comment in comment.comments' ng-include="'comment_tree_render'")
+
 .container
-	h1.page-header {{blog.title}}
-	p {{blog.body}}
+  h1.page-header {{blog.title}}
+  p(ng-bind-html="marked()")
+  h2 COMMENTS
+  +newComment('blog')
+  ul.list-group
+    li.list-group-item(ng-repeat='comment in blog.comments' ng-include="'comment_tree_render'")
