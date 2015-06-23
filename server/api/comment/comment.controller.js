@@ -51,7 +51,7 @@ exports.create = function(req, res) {
   };
 
   console.log(req.body);
-  if (req.body.blog == req.body.parent) {
+  if (req.body.blog === req.body.parent) {
     req.body.ancestors = []
     return author_inject();
   } else {

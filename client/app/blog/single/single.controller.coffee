@@ -32,7 +32,7 @@ add_comment = (blog, new_comment) ->
     parent.comments.push new_comment
 
 angular.module 'mitchDzuganApp'
-.controller 'BlogSingleCtrl', ($scope, $http, socket, $stateParams, Auth) ->
+.controller 'BlogSingleCtrl', ($scope, $sce, $http, socket, $stateParams, Auth) ->
   $scope.isLoggedIn = Auth.isLoggedIn
   $scope.isAdmin = Auth.isAdmin
   $scope.getCurrentUser = Auth.getCurrentUser
@@ -55,7 +55,7 @@ angular.module 'mitchDzuganApp'
 
   $scope.marked = -> 
     if ($scope.blog.body)
-      marked $scope.blog.body
+      $sce.trustAsHtml(marked $scope.blog.body)
     else
       $scope.blog.body
 

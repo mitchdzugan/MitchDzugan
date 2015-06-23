@@ -5,4 +5,6 @@ include ../util.jade
   .row
     .col-sm-12
       +blogFormMix({submit: 'edit_blog', submitText: 'Edit Post'})
+      p Preview: 
+      p(ng-bind-html="marked()")
   hr

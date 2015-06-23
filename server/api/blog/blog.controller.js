@@ -24,12 +24,6 @@ exports.show = function(req, res) {
            .exec(function (err, comments) {
       if (err) {return handleError(res, err)}
       return res.json({blog: blog, comments: comments});
-      blog = blog.toObject();
-      blog.comments = [];
-      for (comment in comments) {
-        add_comment(blog, comments[comment].toObject());
-      }
-      return res.json(blog);
     });
   });
 };

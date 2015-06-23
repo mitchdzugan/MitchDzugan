@@ -1,6 +1,5 @@
 div(ng-include='"components/navbar/navbar.html"')
 
-
 mixin newComment(parent)
   button(class="btn btn-link", ng-show='#{parent}.hidden', ng-click='set_hidden(#{parent}, false)') reply
   button(class="btn btn-link", ng-hide='#{parent}.hidden', ng-click='set_hidden(#{parent}, true)') cancel

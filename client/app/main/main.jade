@@ -1,12 +1,13 @@
 div(ng-include='"components/navbar/navbar.html"')
 
-h1 SITE CURRENTY UNDER CONSTRUCTION
-
-//header#banner.hero-unit
+header#banner.hero-unit
   .container
-    h1 'Allo, 'Allo!
-    p.lead Kick-start your next web app with Angular Fullstack
-    img(src='assets/images/yeoman.png', alt='I\'m Yeoman')
+    h1 Site is currently under construction....
+    p.lead
+      | I'm not totally sure what all I want to do here, but for now check out my 
+      a(href="/blog") blog
+    //p.lead Kick-start your next web app with Angular Fullstack
+    //img(src='assets/images/yeoman.png', alt='I\'m Yeoman')
 
 //.container
   .row
@@ -25,11 +26,9 @@ h1 SITE CURRENTY UNDER CONSTRUCTION
       span.input-group-btn
         button.btn.btn-primary(type='submit', ng-click='addThing()') Add New
 
-//footer.footer
+footer.footer
   .container
     p
-      | Angular Fullstack v2.0.13
+      | Mitch Dzugan
       = ' | '
-      a(href='https://twitter.com/tyhenkel') @tyhenkel
-      = ' | '
-      a(href='https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open') Issues
+      a(href='https://github.com/mitchdzugan') github
